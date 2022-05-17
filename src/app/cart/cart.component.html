@@ -1,0 +1,42 @@
+<h3>Carrinho</h3>
+
+<div *ngIf="items()">
+  <div class="cart-item" *ngFor="let item of items()">
+    <span>{{ item.name }}</span>
+    <span>{{ item.price | currency }}</span>
+    <button type="button" (click)="RemoveFromCart(item)">Remover</button>
+  </div>
+    <h3>Produtos: {{ +SumOfProducts() | currency }}</h3>
+</div>
+
+<div>
+  <div *ngIf="!Shipping(); else NoShipping">
+    <a routerLink="/shipping">Opções de Envio</a>
+  </div>
+
+  <ng-template #NoShipping>
+    <a routerLink="/shipping">Alterar Envio</a>
+    <h3>{{ Shipping()?.type }} {{ Shipping()?.price | currency }}</h3>
+  </ng-template>
+
+  <div *ngIf="this.SumOfProducts()">
+    <h3>Total: {{ Sum() | currency }}</h3>
+  </div>
+</div>
+
+<div>
+  <h3>Entrega</h3>
+  <form [formGroup]="CheckoutForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name"> Nome </label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+
+    <div>
+      <label for="address"> Endereço </label>
+      <input id="address" type="text" formControlName="address" />
+    </div>
+
+    <button class="button" type="submit">Fechar Pedido</button>
+  </form>
+</div>

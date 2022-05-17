@@ -1,0 +1,7 @@
+<h3>Valores de Entrega</h3>
+
+<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+  <button type="button" (click)="UsarEntrega(shipping)">Usar</button>
+</div>

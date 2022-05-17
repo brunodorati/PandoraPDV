@@ -1,0 +1,8 @@
+<a [routerLink]="['/']">
+  <h1>Pandora</h1>
+</a>
+
+<a routerLink="/cart" class="button fancy-button">
+  <i class="material-icons" tooltip="Finalizar">shopping_cart</i>
+  {{ ItemsCount() || '' }}
+</a>
